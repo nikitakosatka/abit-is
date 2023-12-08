@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="../style/study_plan.css">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext"
           rel="stylesheet">
+    <script src="../script/study_plan.js"></script>
+    <script src="../script/header.js"></script>
+    <script src="../script/performance.js"></script>
 </head>
 <body>
-<script src="../script/study_plan.js"></script>
 <header class="header">
     <div class="container">
         <div class="header__inner">
@@ -22,7 +24,6 @@
             </nav>
         </div>
     </div>
-    <script src="../script/header.js"></script>
 </header>
 
 <main class="main">
@@ -34,20 +35,16 @@
     </div>
 
     <div class="container">
-        <table class="curriculum-table">
-            <tr>
-                <th>1 Семестр</th>
-                <th>2 Семестр</th>
-            </tr>
-            <tr>
-                <td class="subject" onclick="showDescription('algebra')">Линейная алгебра</td>
-                <td class="subject" onclick="showDescription('discrete-math')">Дискретная математика</td>
-            </tr>
-            <tr>
-                <td class="subject" onclick="showDescription('programming')">Программирование</td>
-                <td class="subject" onclick="showDescription('algo')">Алгоритмы и структуры данных</td>
-            </tr>
-        </table>
+        <div class="curriculum-grid">
+            <header class="curriculum-header">1 Семестр</header>
+            <header class="curriculum-header">2 Семестр</header>
+            <div class="subject" onclick="showDescription('algebra')">Линейная алгебра</div>
+            <div class="subject" onclick="showDescription('discrete-math')">Дискретная математика</div>
+            <div class="subject" onclick="showDescription('programming')">Программирование</div>
+            <div class="subject" onclick="showDescription('algo')">Алгоритмы и структуры данных</div>
+            <div class="subject" onclick="showDescription('calculus')">Математический анализ</div>
+            <div class="subject" onclick="showDescription('comp-arch')">Архитектура ЭВМ</div>
+        </div>
 
         <div id="algebra" class="description">
             <strong>Линейная алгебра: </strong>Описание линейной алгебры...
@@ -61,6 +58,12 @@
         <div id="algo" class="description">
             <strong>Алгоритмы и структуры данных: </strong>Описание алгоритмов...
         </div>
+        <div id="calculus" class="description">
+            <strong>Математический анализ: </strong>Описание для математического анализа...
+        </div>
+        <div id="comp-arch" class="description">
+            <strong>Архитектура ЭВМ: </strong>Описание архитектуры ЭВМ...
+        </div>
     </div>
 </main>
 
@@ -73,6 +76,9 @@
         </div>
         <div class="footer-copyright">
             <p>&copy; 2023 - Университет ИТМО.</p>
+        </div>
+        <div class="footer-performance">
+            Время загрузки страницы: <span id="loadTime">0</span> мс
         </div>
     </div>
 </footer>

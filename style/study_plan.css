@@ -2,27 +2,36 @@
     overflow: hidden;
 }
 
-.curriculum-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    margin: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+.curriculum-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+    padding: 10px;
 }
 
-.curriculum-table td, .curriculum-table th {
-    padding: 8px;
+.curriculum-grid > .subject:nth-child(4n + 3),
+.curriculum-grid > .subject:nth-child(4n + 4) {
+    background-color: #e5e5e5;
+}
+
+.curriculum-grid > .subject:nth-child(4n + 1),
+.curriculum-grid > .subject:nth-child(4n + 2) {
+    background-color: #d5d5d5;
+}
+
+.curriculum-header {
+    font-weight: bold;
     text-align: center;
-}
-
-.curriculum-table th {
     background-color: #278fff;
+    padding: 10px;
     color: white;
 }
 
 .subject {
     cursor: pointer;
+    background-color: #f4f4f4;
+    padding: 10px;
 }
 
 .description {

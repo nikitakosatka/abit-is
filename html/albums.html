@@ -9,6 +9,9 @@
           rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="../script/header.js"></script>
+    <script src="../script/albums.js"></script>
+    <script src="../script/performance.js"></script>
 </head>
 <body>
 <header class="header">
@@ -23,7 +26,6 @@
             </nav>
         </div>
     </div>
-    <script src="../script/header.js"></script>
 </header>
 
 <main class="main">
@@ -45,8 +47,6 @@
         </div>
         <div id="error-message" class="hidden"></div>
     </div>
-
-    <script src="../script/albums.js"></script>
 </main>
 
 <footer>
@@ -58,6 +58,9 @@
         </div>
         <div class="footer-copyright">
             <p>&copy; 2023 - Университет ИТМО.</p>
+        </div>
+        <div class="footer-performance">
+            Время загрузки страницы: <span id="loadTime">0</span> мс
         </div>
     </div>
 </footer>
