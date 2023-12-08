@@ -26,12 +26,14 @@
     background-color: #278fff;
     padding: 10px;
     color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .subject {
     cursor: pointer;
     background-color: #f4f4f4;
     padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .description {
