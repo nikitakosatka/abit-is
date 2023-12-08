@@ -11,4 +11,3 @@ function showDescription(subjectId) {
         description.style.display = 'block';
     }
 }
-

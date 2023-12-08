@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function render(data) {
         const fragment = document.createDocumentFragment();
 
-        data.forEach(({ title, thumbnailUrl, url }) => {
+        data.forEach(({title, thumbnailUrl, url}) => {
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
 
