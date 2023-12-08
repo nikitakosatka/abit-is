@@ -4,11 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
     const errorMessage = document.getElementById('error-message');
 
-    let firstLoad = true;
-
     loadDataBtn.addEventListener('click', () => {
-        fetchData(firstLoad);
-        firstLoad = !firstLoad;
+        fetchData();
     });
 
     function initSwiper() {
@@ -24,13 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function fetchData(isFirstLoad) {
+    function fetchData() {
         preloader.classList.remove('hidden');
         errorMessage.classList.add('hidden');
 
-        const url = isFirstLoad
-            ? 'https://jsonplaceholder.typicode.com/photos?id_gte=100'
-            : 'https://jsonplaceholder.typicode.com/photos?id_lte=200';
+        const url = 'https://jsonplaceholder.typicode.com/photos?id_lte=200';
 
         fetch(url)
             .then((response) => {
