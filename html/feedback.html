@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Разработка программного обеспечения. Отзывы</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/feedback.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext"
+          rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">ИТМО ИС</div>
+            <nav class="nav">
+                <a class="nav__link" href="index.html">О программе</a>
+                <a class="nav__link" href="study_plan.html">Учебный план</a>
+                <a class="nav__link active" href="#">Отзывы</a>
+                <a class="nav__link" href="albums.html">Альбомы</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <div class="container">
+        <div class="intro__inner">
+            <h1 class="intro__title">Разработка программного обеспечения</h1>
+        </div>
+        <h2>Отзывы</h2>
+    </div>
+
+    <div class="container">
+        <section class="review-section">
+            <form id="review-form">
+                <label for="review-name">От:</label>
+                <input type="text" id="review-name" required>
+
+                <label for="review-text">Отзыв:</label>
+                <textarea id="review-text" required></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+
+            <div id="review-container">
+            </div>
+        </section>
+    </div>
+    <script src="../script/feedback.js"></script>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a class="footer__link" href="#">О программе</a>
+            <a class="footer__link" href="#">Материалы</a>
+            <a class="footer__link" href="#">Контакты</a>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2023 - Университет ИТМО.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.table-wrapper {
+    overflow: hidden;
+}
+
+.curriculum-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0;
+    box-shadow: 0 0 10px #333;
+    border-radius: 10px;
+}
+
+.curriculum-table td, .curriculum-table th {
+    padding: 8px;
+    text-align: center;
+}
+
+.curriculum-table th {
+    background-color: #278fff;
+    color: white;
+}
+
+.subject {
+    cursor: pointer;
+}
+
+.description {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+}

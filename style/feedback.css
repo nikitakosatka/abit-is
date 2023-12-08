@@ -1,0 +1,25 @@
+.review-section {
+    padding: 1rem;
+}
+
+form {
+    margin-bottom: 1rem;
+}
+
+input, textarea {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.25rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.review {
+    border: 1px solid #aaa;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-name, .review-text {
+    margin: 0;
+}
