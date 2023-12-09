@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style/study_plan.css">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext"
           rel="stylesheet">
+    <script src="script/study_plan.js"></script>
+    <script src="script/header.js"></script>
+    <script src="script/performance.js"></script>
 </head>
 <body>
 <header class="header">
@@ -15,8 +18,8 @@
             <div class="header__logo">ИТМО ИС</div>
             <nav id="nav" class="nav">
                 <a class="nav__link" href="index.html">О программе</a>
-                <a class="nav__link active" href="study_plan.html">Учебный план</a>
-                <a class="nav__link">Отзывы</a>
+                <a class="nav__link" href="study_plan.html">Учебный план</a>
+                <a class="nav__link" href="feedback.html">Отзывы</a>
                 <a class="nav__link">Альбомы</a>
             </nav>
         </div>
@@ -35,12 +38,12 @@
         <div class="curriculum-grid">
             <header class="curriculum-header">1 Семестр</header>
             <header class="curriculum-header">2 Семестр</header>
-            <div class="subject">Линейная алгебра</div>
-            <div class="subject">Дискретная математика</div>
-            <div class="subject">Программирование</div>
-            <div class="subject">Алгоритмы и структуры данных</div>
-            <div class="subject">Математический анализ</div>
-            <div class="subject">Архитектура ЭВМ</div>
+            <div class="subject" onclick="showDescription('algebra')">Линейная алгебра</div>
+            <div class="subject" onclick="showDescription('discrete-math')">Дискретная математика</div>
+            <div class="subject" onclick="showDescription('programming')">Программирование</div>
+            <div class="subject" onclick="showDescription('algo')">Алгоритмы и структуры данных</div>
+            <div class="subject" onclick="showDescription('calculus')">Математический анализ</div>
+            <div class="subject" onclick="showDescription('comp-arch')">Архитектура ЭВМ</div>
         </div>
 
         <div id="algebra" class="description">
