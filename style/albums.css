@@ -53,3 +53,8 @@
 .swiper-pagination-bullets {
     display: none;
 }
+
+.swiper-container {
+    overflow: hidden;
+    width: 100%;
+}
