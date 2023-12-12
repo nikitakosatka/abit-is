@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loadDataBtn = document.getElementById('load-data');
     const gallery = document.getElementById('gallery');
     const preloader = document.getElementById('preloader');
     const errorMessage = document.getElementById('error-message');
+    const itemsToLoad = 10;
+    let loadedItems = 10;
 
-    loadDataBtn.addEventListener('click', () => {
-        fetchData();
-    });
+    fetchData(1, loadedItems);
 
     function initSwiper() {
         new Swiper('.swiper-container', {
@@ -18,14 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            on: {
+                reachEnd: () => {
+                    if (loadedItems < 5000) {
+                        loadedItems += itemsToLoad;
+                        fetchData(loadedItems - itemsToLoad, loadedItems);
+                    }
+                },
+            },
         });
     }
 
-    function fetchData() {
+
+    function fetchData(startId, endId) {
         preloader.classList.remove('hidden');
         errorMessage.classList.add('hidden');
 
-        const url = 'https://jsonplaceholder.typicode.com/photos?id_lte=200';
+        const url = `https://jsonplaceholder.typicode.com/photos?_start=${startId}&_end=${endId}`
 
         fetch(url)
             .then((response) => {
