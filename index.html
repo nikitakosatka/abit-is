@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style/about.css">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext"
           rel="stylesheet">
+    <script src="script/header.js"></script>
+    <script src="script/performance.js"></script>
 </head>
 <body>
 <header class="header">
@@ -14,10 +16,10 @@
         <div class="header__inner">
             <div class="header__logo">ИТМО ИС</div>
             <nav id="nav" class="nav">
-                <a class="nav__link active" href="index.html">О программе</a>
+                <a class="nav__link" href="index.html">О программе</a>
                 <a class="nav__link" href="study_plan.html">Учебный план</a>
-                <a class="nav__link">Отзывы</a>
-                <a class="nav__link">Альбомы</a>
+                <a class="nav__link" href="feedback.html">Отзывы</a>
+                <a class="nav__link" href="albums.html">Альбомы</a>
             </nav>
         </div>
     </div>
@@ -79,6 +81,9 @@
         </div>
         <div class="footer-copyright">
             <p>&copy; 2023 - Университет ИТМО.</p>
+        </div>
+        <div class="footer-performance">
+            Время загрузки страницы: <span id="loadTime">0</span> мс
         </div>
     </div>
 </footer>
