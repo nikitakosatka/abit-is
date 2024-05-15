@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         preloader.classList.remove('hidden');
         errorMessage.classList.add('hidden');
 
-        const url = `http://localhost:8080/api/v1/interview`;
+        const url = `https://is-y25-website.onrender.com/api/v1/interview`;
 
         fetch(url)
             .then((response) => {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = document.createElement('h3');
             text.textContent = title;
             slide.onclick = () => {
-                window.location.href = `http://localhost:8080/interview/${interview_id}`;
+                window.location.href = `https://is-y25-website.onrender.com/interview/${interview_id}`;
             };
 
             slide.appendChild(text);

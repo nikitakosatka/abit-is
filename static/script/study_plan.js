@@ -16,7 +16,7 @@ function loadSubjects() {
     const isAdmin = user ? JSON.parse(user).email === 'admin@itmo.ru' : false;
     console.log(isAdmin);
 
-    fetch('http://localhost:8080/api/v1/subject')
+    fetch('https://is-y25-website.onrender.com/api/v1/subject')
         .then(response => response.json())
         .then(subjects => {
             const curriculumGrid = document.getElementById('curriculumGrid');
@@ -89,7 +89,7 @@ function addSubject() {
         return;
     }
 
-    fetch('http://localhost:8080/api/v1/subject/', {
+    fetch('https://is-y25-website.onrender.com/api/v1/subject/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ function deleteSubject() {
         return;
     }
 
-    fetch(`http://localhost:8080/api/v1/subject/${name}/${semester}`, {
+    fetch(`https://is-y25-website.onrender.com/api/v1/subject/${name}/${semester}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ function updateSubject() {
 
     console.log("Sending data:", subjectData);
 
-    fetch('http://localhost:8080/api/v1/subject/', {
+    fetch('https://is-y25-website.onrender.com/api/v1/subject/', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

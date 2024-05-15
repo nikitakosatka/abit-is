@@ -29,7 +29,7 @@ func NewHandler(tmplPattern string) (*ViewHandler, error) {
 func (v *ViewHandler) IndexHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		startTime := time.Now()
-		resp, err := http.Get("http://localhost:8080/api/v1/study_plan")
+		resp, err := http.Get("https://is-y25-website.onrender.com/api/v1/study_plan")
 		if err != nil {
 			http.Error(
 				w,
@@ -134,7 +134,7 @@ func (v *ViewHandler) InterviewHandler() http.HandlerFunc {
 		startTime := time.Now()
 		id := chi.URLParam(r, "id")
 		resp, err := http.Get(
-			fmt.Sprintf("http://localhost:8080/api/v1/interview/%v", id),
+			fmt.Sprintf("https://is-y25-website.onrender.com/api/v1/interview/%v", id),
 		)
 		if err != nil {
 			http.Error(
