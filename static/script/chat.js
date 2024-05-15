@@ -1,7 +1,7 @@
 let socket;
 
 function connectWebSocket() {
-    socket = new WebSocket("ws://is-y25-website.onrender.com/ws");
+    socket = new WebSocket("wss://is-y25-website.onrender.com/ws");
 
     socket.onopen = function(event) {
         console.log("Connected to WebSocket server.");
