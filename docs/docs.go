@@ -912,7 +912,7 @@ var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "",
 	BasePath:         "/",
-	Schemes:          []string{"http"},
+	Schemes:          []string{"https"},
 	Title:            "Abit IS",
 	Description:      "Abit service.",
 	InfoInstanceName: "swagger",

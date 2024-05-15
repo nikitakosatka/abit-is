@@ -581,7 +581,7 @@ paths:
       tags:
       - subject
 schemes:
-- http
+- https
 securityDefinitions:
   BearerAuth:
     in: header
