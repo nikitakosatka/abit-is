@@ -40,7 +40,7 @@ const (
 // @description Abit service.
 // @version 1.0
 // @BasePath /
-// @schemes http
+// @schemes https
 // @securityDefinitions.apikey BearerAuth
 // @In header
 // @Name Authorization
