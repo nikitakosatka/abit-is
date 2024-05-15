@@ -1,0 +1,585 @@
+basePath: /
+definitions:
+  model.EduForm:
+    enum:
+    - Extramural
+    - Full-Time
+    type: string
+    x-enum-varnames:
+    - EduFormExtramural
+    - EduFormFullTime
+  model.Interview:
+    properties:
+      interview_id:
+        type: integer
+      text:
+        type: string
+      title:
+        type: string
+    type: object
+  model.InterviewData:
+    properties:
+      text:
+        type: string
+      title:
+        type: string
+    type: object
+  model.Season:
+    enum:
+    - Fall
+    - Spring
+    type: string
+    x-enum-varnames:
+    - SeasonFall
+    - SeasonSpring
+  model.Semester:
+    properties:
+      season:
+        $ref: '#/definitions/model.Season'
+      semester_num:
+        type: integer
+    type: object
+  model.StudyPlan:
+    properties:
+      cost:
+        type: number
+      description:
+        type: string
+      education_form:
+        $ref: '#/definitions/model.EduForm'
+      id:
+        type: integer
+      name:
+        type: string
+      years:
+        type: integer
+    type: object
+  model.Subject:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      semester:
+        type: integer
+    type: object
+  schema.UID:
+    properties:
+      id:
+        type: string
+    type: object
+  schema.User:
+    properties:
+      email:
+        example: user@example.com
+        type: string
+      password:
+        example: password123
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Abit service.
+  title: Abit IS
+  version: "1.0"
+paths:
+  /api/v1/interview:
+    get:
+      description: get a list of all interviews
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Interview'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List all interviews
+      tags:
+      - interview
+    post:
+      consumes:
+      - application/json
+      description: Add a new interview to the database
+      parameters:
+      - description: Add interview
+        in: body
+        name: interview
+        required: true
+        schema:
+          $ref: '#/definitions/model.InterviewData'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad request
+        "500":
+          description: Server error
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new interview
+      tags:
+      - interview
+  /api/v1/interview/{id}:
+    delete:
+      description: Delete a interview by id
+      parameters:
+      - description: Interview ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Deleted successfully
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a interview
+      tags:
+      - interview
+    get:
+      description: Get details of an interview by id
+      parameters:
+      - description: Interview ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Interview'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get details of an interview
+      tags:
+      - interview
+    put:
+      consumes:
+      - application/json
+      description: Update an existing interview by id
+      parameters:
+      - description: Interview ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Interview data
+        in: body
+        name: semester
+        required: true
+        schema:
+          $ref: '#/definitions/model.InterviewData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Interview'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Update an existing interview
+      tags:
+      - interview
+  /api/v1/semester:
+    get:
+      description: get a list of all semesters
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Semester'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List all semesters
+      tags:
+      - semester
+    post:
+      consumes:
+      - application/json
+      description: Add a new semester to the database
+      parameters:
+      - description: Add semester
+        in: body
+        name: semester
+        required: true
+        schema:
+          $ref: '#/definitions/model.Semester'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad request
+        "500":
+          description: Server error
+      summary: Create a new semester
+      tags:
+      - semester
+    put:
+      consumes:
+      - application/json
+      description: Update an existing semester by semester number
+      parameters:
+      - description: Semester object
+        in: body
+        name: semester
+        required: true
+        schema:
+          $ref: '#/definitions/model.Semester'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Semester'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Update an existing semester
+      tags:
+      - semester
+  /api/v1/semester/{num}:
+    delete:
+      description: Delete a semester by semester number
+      parameters:
+      - description: Semester Number
+        in: path
+        name: num
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Deleted successfully
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Delete a semester
+      tags:
+      - semester
+    get:
+      description: Get details of a semester by semester number
+      parameters:
+      - description: Semester Number
+        in: path
+        name: num
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Semester'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get details of a semester
+      tags:
+      - semester
+  /api/v1/signup:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user using email and password.
+      parameters:
+      - description: User info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/schema.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schema.UID'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Register user
+      tags:
+      - auth
+  /api/v1/study_plan:
+    get:
+      description: get current study plan
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.StudyPlan'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get current study plan
+      tags:
+      - study_plan
+    put:
+      consumes:
+      - application/json
+      description: Update an existing study plan
+      parameters:
+      - description: Study Plan
+        in: body
+        name: study_plan
+        required: true
+        schema:
+          $ref: '#/definitions/model.StudyPlan'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.StudyPlan'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Update current study plan
+      tags:
+      - study_plan
+  /api/v1/subject:
+    get:
+      description: get a list of all subjects
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Subject'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List all subjects
+      tags:
+      - subject
+    post:
+      consumes:
+      - application/json
+      description: Add a new subject to the database
+      parameters:
+      - description: Add semester
+        in: body
+        name: semester
+        required: true
+        schema:
+          $ref: '#/definitions/model.Subject'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad request
+        "500":
+          description: Server error
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new subject
+      tags:
+      - subject
+    put:
+      consumes:
+      - application/json
+      description: Update an existing subject by name and semester
+      parameters:
+      - description: Subject object
+        in: body
+        name: subject
+        required: true
+        schema:
+          $ref: '#/definitions/model.Subject'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Subject'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Update an existing subject
+      tags:
+      - subject
+  /api/v1/subject/{name}/{semester_num}:
+    delete:
+      description: Delete a subject by name and semester
+      parameters:
+      - description: Name
+        in: path
+        name: name
+        required: true
+        type: string
+      - description: Semester Number
+        in: path
+        name: semester_num
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Deleted successfully
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a subject
+      tags:
+      - subject
+    get:
+      description: Get details of a subject by semester number
+      parameters:
+      - description: Subject Name
+        in: path
+        name: name
+        required: true
+        type: string
+      - description: Semester Number
+        in: path
+        name: semester_num
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Subject'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get details of a subject
+      tags:
+      - subject
+schemes:
+- http
+swagger: "2.0"

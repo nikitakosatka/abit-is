@@ -1,0 +1,11 @@
+{{ define "header" }}
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">ИТМО ИС</div>
+            {{template "nav" .}}
+            {{template "auth" .}}
+        </div>
+    </div>
+</header>
+{{ end }}

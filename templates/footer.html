@@ -1,0 +1,18 @@
+{{ define "footer" }}
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a class="footer__link" href="#">О программе</a>
+            <a class="footer__link" href="#">Материалы</a>
+            <a class="footer__link" href="#">Контакты</a>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2024 - Университет ИТМО.</p>
+        </div>
+        <div class="footer-performance">
+            Время загрузки страницы (клиент): <span id="loadTime">0</span> мс
+            Время загрузки страницы (сервер): <span>{{ .ServerLoadTime }}</span>мс
+        </div>
+    </div>
+</footer>
+{{ end }}

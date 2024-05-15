@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gallery = document.getElementById('gallery');
     const preloader = document.getElementById('preloader');
     const errorMessage = document.getElementById('error-message');
-    const itemsToLoad = 10;
-    let loadedItems = 10;
 
-    fetchData(1, loadedItems);
+    fetchData();
 
     function initSwiper() {
         new Swiper('.swiper-container', {
@@ -16,24 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
-            },
-            on: {
-                reachEnd: () => {
-                    if (loadedItems < 5000) {
-                        loadedItems += itemsToLoad;
-                        fetchData(loadedItems - itemsToLoad, loadedItems);
-                    }
-                },
-            },
+            }
         });
     }
 
-
-    function fetchData(startId, endId) {
+    function fetchData() {
         preloader.classList.remove('hidden');
         errorMessage.classList.add('hidden');
 
-        const url = `https://jsonplaceholder.typicode.com/photos?_start=${startId}&_end=${endId}`
+        const url = `http://localhost:8080/api/v1/interview`;
 
         fetch(url)
             .then((response) => {
@@ -58,23 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function render(data) {
         const fragment = document.createDocumentFragment();
 
-        data.forEach(({title, thumbnailUrl, url}) => {
+        data.forEach(({ interview_id, title }) => {
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
-
-            const img = document.createElement('img');
-            img.src = thumbnailUrl;
-            img.alt = title;
-            img.onclick = () => {
-                window.open(url, '_blank');
+            const text = document.createElement('h3');
+            text.textContent = title;
+            slide.onclick = () => {
+                window.location.href = `http://localhost:8080/interview/${interview_id}`;
             };
 
-            const text = document.createElement('p');
-            text.textContent = title;
-
-            slide.appendChild(img);
             slide.appendChild(text);
-
             fragment.appendChild(slide);
         });
 

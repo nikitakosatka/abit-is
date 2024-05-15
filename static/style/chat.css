@@ -26,3 +26,20 @@ input, textarea {
 .review-name, .review-text {
     margin: 0;
 }
+
+#chat {
+    list-style-type: none;
+    padding: 0;
+}
+
+#chat li {
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+}
+
+#chat-container {
+    height: 300px;
+    overflow-y: scroll;
+}
