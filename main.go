@@ -41,7 +41,7 @@ const (
 // @version 1.0
 // @BasePath /
 // @schemes http
-// @SecurityDefinitions apiKey Bearer
+// @securityDefinitions.apikey BearerAuth
 // @In header
 // @Name Authorization
 func main() {

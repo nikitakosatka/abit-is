@@ -123,7 +123,7 @@ paths:
         "500":
           description: Server error
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Create a new interview
       tags:
       - interview
@@ -154,7 +154,7 @@ paths:
           schema:
             type: string
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Delete a interview
       tags:
       - interview
@@ -220,7 +220,7 @@ paths:
           schema:
             type: string
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Update an existing interview
       tags:
       - interview
@@ -474,7 +474,7 @@ paths:
         "500":
           description: Server error
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Create a new subject
       tags:
       - subject
@@ -509,7 +509,7 @@ paths:
           schema:
             type: string
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Update an existing subject
       tags:
       - subject
@@ -545,7 +545,7 @@ paths:
           schema:
             type: string
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Delete a subject
       tags:
       - subject
@@ -582,4 +582,9 @@ paths:
       - subject
 schemes:
 - http
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

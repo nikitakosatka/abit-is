@@ -42,7 +42,7 @@
             "post": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Add a new interview to the database",
@@ -123,7 +123,7 @@
             "put": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Update an existing interview by id",
@@ -185,7 +185,7 @@
             "delete": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Delete a interview by id",
@@ -580,7 +580,7 @@
             "put": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Update an existing subject by name and semester",
@@ -635,7 +635,7 @@
             "post": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Add a new subject to the database",
@@ -723,7 +723,7 @@
             "delete": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Delete a subject by name and semester",
@@ -892,6 +892,13 @@
                     "example": "password123"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

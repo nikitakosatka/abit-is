@@ -32,7 +32,7 @@ func NewInterviewController(
 // @Tags interview
 // @Accept json
 // @Produce json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param interview body model.InterviewData true "Add interview"
 // @Success 201 {object} nil
 // @Failure 400 {object} nil "Bad request"
@@ -136,7 +136,7 @@ func (c *InterviewController) GetInterview(
 // @Tags interview
 // @Accept json
 // @Produce json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param id path int true "Interview ID"
 // @Param semester body model.InterviewData true "Interview data"
 // @Success 200 {object} model.Interview
@@ -186,7 +186,7 @@ func (c *InterviewController) UpdateInterview(
 // @Description Delete a interview by id
 // @Tags interview
 // @Produce json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param id path int true "Interview ID"
 // @Success 204 "Deleted successfully"
 // @Failure 400 {string} string "Bad request"

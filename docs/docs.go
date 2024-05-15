@@ -46,7 +46,7 @@ const docTemplate = `{
             "post": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Add a new interview to the database",
@@ -127,7 +127,7 @@ const docTemplate = `{
             "put": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Update an existing interview by id",
@@ -189,7 +189,7 @@ const docTemplate = `{
             "delete": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Delete a interview by id",
@@ -584,7 +584,7 @@ const docTemplate = `{
             "put": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Update an existing subject by name and semester",
@@ -639,7 +639,7 @@ const docTemplate = `{
             "post": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Add a new subject to the database",
@@ -727,7 +727,7 @@ const docTemplate = `{
             "delete": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Delete a subject by name and semester",
@@ -896,6 +896,13 @@ const docTemplate = `{
                     "example": "password123"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

@@ -32,7 +32,7 @@ func NewSubjectController(
 // @Tags subject
 // @Accept json
 // @Produce json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param semester body model.Subject true "Add semester"
 // @Success 201 {object} nil
 // @Failure 400 {object} nil "Bad request"
@@ -138,7 +138,7 @@ func (c *SubjectController) GetSubject(
 // @Tags subject
 // @Accept json
 // @Produce json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param subject body model.Subject true "Subject object"
 // @Success 200 {object} model.Subject
 // @Failure 400 {string} string "Bad request"
@@ -175,7 +175,7 @@ func (c *SubjectController) UpdateSubject(
 // @Description Delete a subject by name and semester
 // @Tags subject
 // @Produce json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param name path string true "Name"
 // @Param semester_num path int true "Semester Number"
 // @Success 204 "Deleted successfully"
