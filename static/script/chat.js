@@ -12,9 +12,12 @@ function connectWebSocket() {
     };
 
     socket.onmessage = function (event) {
-        let chat = document.getElementById('chat');
         let msgObj = JSON.parse(event.data);
         addMessageToChat(msgObj);
+    };
+
+    socket.onerror = function (error) {
+        console.error("WebSocket error: ", error);
     };
 }
 
