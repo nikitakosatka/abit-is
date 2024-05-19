@@ -46,7 +46,7 @@ func (c *AuthController) SignUp(w http.ResponseWriter, r *http.Request) {
 		http.Error(
 			w,
 			fmt.Sprintf("sign up: %v", err),
-			http.StatusInternalServerError,
+			http.StatusBadRequest,
 		)
 		return
 	}

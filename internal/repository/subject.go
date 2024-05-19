@@ -41,7 +41,7 @@ func (r *SubjectRepository) ListSubjects(
 	}
 	defer rows.Close()
 
-	var subjects []model.Subject
+	subjects := make([]model.Subject, 0)
 	for rows.Next() {
 		var s model.Subject
 		if err := rows.Scan(

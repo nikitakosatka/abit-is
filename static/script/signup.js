@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 if (response.ok) {
                     return response.json();
-                } else {
+                } else if (response.headers.get('Content-Type').includes('application/json')) {
                     return response.json().then(json => Promise.reject(new Error(json.message || 'Ошибка при регистрации')));
+                } else {
+                    return response.text().then(text => Promise.reject(new Error(text || 'Ошибка при регистрации')));
                 }
             })
             .then(data => {

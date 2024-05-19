@@ -41,7 +41,7 @@ func (r *InterviewRepository) ListInterviews(
 	}
 	defer rows.Close()
 
-	var interviews []model.Interview
+	interviews := make([]model.Interview, 0)
 	for rows.Next() {
 		var interview model.Interview
 		if err := rows.Scan(

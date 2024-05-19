@@ -41,7 +41,7 @@ func (r *SemesterRepository) ListSemesters(
 	}
 	defer rows.Close()
 
-	var semesters []model.Semester
+	semesters := make([]model.Semester, 0)
 	for rows.Next() {
 		var sem model.Semester
 		if err := rows.Scan(&sem.SemesterNum, &sem.Season); err != nil {
