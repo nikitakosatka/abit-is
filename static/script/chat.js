@@ -15,10 +15,6 @@ function connectWebSocket() {
         let msgObj = JSON.parse(event.data);
         addMessageToChat(msgObj);
     };
-
-    socket.onerror = function (error) {
-        console.error("WebSocket error: ", error);
-    };
 }
 
 function sendMessage() {
@@ -60,7 +56,7 @@ auth.onAuthStateChanged(user => {
         localStorage.removeItem('idToken');
         localStorage.removeItem('userEmail');
 
-        if (socket) {
+        if (socket && socket.readyState === WebSocket.OPEN) {
             socket.close();
         }
     }
