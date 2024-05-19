@@ -22,11 +22,12 @@ func NewInterviewService(
 
 func (s *InterviewService) CreateInterview(
 	ctx context.Context, interview *model.InterviewData,
-) error {
-	if err := s.repository.CreateInterview(ctx, interview); err != nil {
-		return fmt.Errorf("create interview: %w", err)
+) (*model.Interview, error) {
+	res, err := s.repository.CreateInterview(ctx, interview)
+	if err != nil {
+		return nil, fmt.Errorf("create interview: %w", err)
 	}
-	return nil
+	return res, nil
 }
 
 func (s *InterviewService) ListInterviews(

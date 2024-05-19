@@ -46,9 +46,16 @@ func (c *InterviewController) CreateInterview(
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if err := c.service.CreateInterview(r.Context(), &interview); err != nil {
+	res, err := c.service.CreateInterview(r.Context(), &interview)
+	if err != nil {
 		http.Error(
 			w, "Failed to create interview", http.StatusInternalServerError,
+		)
+		return
+	}
+	if err := json.NewEncoder(w).Encode(res); err != nil {
+		http.Error(
+			w, "Failed to encode interview", http.StatusInternalServerError,
 		)
 		return
 	}

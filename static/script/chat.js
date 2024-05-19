@@ -3,23 +3,18 @@ let socket;
 function connectWebSocket() {
     socket = new WebSocket("wss://is-y25-website.onrender.com/ws");
 
-    socket.onopen = function(event) {
+    socket.onopen = function (event) {
         console.log("Connected to WebSocket server.");
     };
 
-    socket.onclose = function(event) {
+    socket.onclose = function (event) {
         console.log("Disconnected from WebSocket server.");
     };
 
-    socket.onmessage = function(event) {
+    socket.onmessage = function (event) {
         let chat = document.getElementById('chat');
-        let newMessage = document.createElement('li');
         let msgObj = JSON.parse(event.data);
-        newMessage.innerText = msgObj.email + ": " + msgObj.message;
-        chat.appendChild(newMessage);
-        chat.scrollTop = chat.scrollHeight;
-
-        saveMessage(event.data);
+        addMessageToChat(msgObj);
     };
 }
 
@@ -30,7 +25,7 @@ function sendMessage() {
         return;
     }
     if (email) {
-        let msgObj = { email: email, message: input.value };
+        let msgObj = {email: email, message: input.value};
         socket.send(JSON.stringify(msgObj));
         input.value = '';
     } else {
@@ -39,37 +34,15 @@ function sendMessage() {
     }
 }
 
-function isValidJSON(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        return false;
-    }
-    return true;
-}
-
-function loadMessages() {
+function addMessageToChat(msgObj) {
     let chat = document.getElementById('chat');
-    let messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-    messages.forEach(function(message) {
-        if (isValidJSON(message)) {
-            let msgObj = JSON.parse(message);
-            let newMessage = document.createElement('li');
-            newMessage.innerText = msgObj.email + ": " + msgObj.message;
-            chat.appendChild(newMessage);
-            chat.scrollTop = chat.scrollHeight;
-        }
-    });
+    let newMessage = document.createElement('li');
+    newMessage.innerText = msgObj.email + ": " + msgObj.message;
+    chat.appendChild(newMessage);
+    chat.scrollTop = chat.scrollHeight;
 }
 
-function saveMessage(message) {
-    let messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-    messages.push(message);
-    localStorage.setItem('chatMessages', JSON.stringify(messages));
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadMessages();
+document.addEventListener('DOMContentLoaded', function () {
     connectWebSocket();
 });
 

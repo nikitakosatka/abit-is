@@ -16,6 +16,15 @@
             <div class="swiper-button-prev"></div>
         </div>
         <div id="error-message" class="hidden"></div>
+        <div id="adminControls" style="display: none;">
+            <h2>Admin Controls</h2>
+            <h3>Add interview</h3>
+            <form id="addSubjectForm" class="form">
+                <input type="text" id="addTitle" class="input" placeholder="Title"/>
+                <textarea id="addText" class="input" placeholder="Text"></textarea>
+                <button type="button" class="button" onclick="addInterview()">Add Interview</button>
+            </form>
+        </div>
     </div>
 </main>
 {{ end }}

@@ -21,14 +21,21 @@ func NewInterviewRepository(dbPool *pgxpool.Pool) *InterviewRepository {
 
 func (r *InterviewRepository) CreateInterview(
 	ctx context.Context, s *model.InterviewData,
-) error {
-	query := `INSERT INTO interview (title, text) VALUES ($1, $2)`
-	if _, err := r.pool.Exec(
-		ctx, query, s.Title, s.Text,
-	); err != nil {
-		return fmt.Errorf("execute query: %w", err)
+) (*model.Interview, error) {
+	var id int
+	if err := r.pool.QueryRow(
+		ctx, `INSERT INTO interview (title, text) VALUES ($1, $2) RETURNING interview_id`, s.Title, s.Text,
+	).Scan(&id); err != nil {
+		return nil, fmt.Errorf("scan id: %w", err)
 	}
-	return nil
+
+	return &model.Interview{
+		ID: id,
+		InterviewData: model.InterviewData{
+			Title: s.Title,
+			Text:  s.Text,
+		},
+	}, nil
 }
 
 func (r *InterviewRepository) ListInterviews(
@@ -72,7 +79,7 @@ func (r *InterviewRepository) UpdateInterview(
 ) (*model.Interview, error) {
 	query := `UPDATE interview SET title = $1, text = $2 WHERE interview_id = $3 RETURNING interview_id`
 	if err := r.pool.QueryRow(
-		ctx, query, interview.Title, interview.Text,
+		ctx, query, interview.Title, interview.Text, interview.ID,
 	).Scan(&interview.ID); err != nil {
 		return nil, fmt.Errorf("scan row: %w", err)
 	}

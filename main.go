@@ -150,6 +150,7 @@ func run() error {
 				return true
 			},
 		},
+		pool,
 	)
 
 	handler, err := views.NewHandler("templates/*.html")
