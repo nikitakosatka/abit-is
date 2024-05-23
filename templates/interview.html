@@ -1,0 +1,24 @@
+{{ define "interview" }}
+<main class="main">
+    <div class="container">
+        <div class="intro__inner">
+            <h1 class="intro__title">Разработка программного обеспечения</h1>
+        </div>
+        <div id="adminControls" style="display: none;">
+            <button id="edit-button">Редактировать</button>
+            <button id="delete-button">Удалить</button>
+        </div>
+        <h2 id="interview-title">{{.Interview.Title}}</h2>
+
+        <section class="review-section">
+            <p id="interview-text">{{.Interview.Text}}</p>
+        </section>
+
+        <div id="edit-form" class="container" style="display:none;">
+            <input type="text" id="edit-title" value="{{.Interview.Title}}"/>
+            <textarea id="edit-text">{{.Interview.Text}}</textarea>
+            <button id="save-button">Сохранить</button>
+        </div>
+    </div>
+</main>
+{{ end }}

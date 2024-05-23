@@ -1,0 +1,39 @@
+{{ define "study_plan" }}
+<main class="main">
+  <div class="container">
+    <div class="intro__inner">
+      <h1 class="intro__title">Разработка программного обеспечения</h1>
+    </div>
+    <h2>Учебный план</h2>
+  </div>
+
+  <div class="container">
+    <div class="curriculum-grid" id="curriculumGrid">
+    </div>
+    <div id="adminControls" style="display: none;">
+      <h2>Admin Controls</h2>
+      <h3>Add subject</h3>
+      <form id="addSubjectForm" class="form">
+        <input type="text" id="addName" class="input" placeholder="Subject Name"/>
+        <input type="text" id="addSemester" class="input" placeholder="Semester"/>
+        <input type="text" id="addDescription" class="input" placeholder="Description"/>
+        <button type="button" class="button" onclick="addSubject()">Add Subject</button>
+      </form>
+      <h3>Delete subject</h3>
+      <form id="deleteSubjectForm" class="form">
+        <input type="text" id="deleteName" class="input" placeholder="Subject Name"/>
+        <input type="text" id="deleteSemester" class="input" placeholder="Semester"/>
+        <button type="button" class="button" onclick="deleteSubject()">Delete Subject</button>
+      </form>
+      <h3>Update subject</h3>
+      <form id="updateSubjectForm" class="form">
+        <input type="text" id="updateName" class="input" placeholder="Subject Name"/>
+        <input type="text" id="updateSemester" class="input" placeholder="Semester"/>
+        <input type="text" id="updateDescription" class="input" placeholder="Description"/>
+        <button type="button" class="button" onclick="updateSubject()">Update Subject</button>
+      </form>
+    </div>
+  </div>
+
+</main>
+{{ end }}
