@@ -19,7 +19,8 @@ const docTemplate = `{
             "get": {
                 "description": "get a list of all interviews",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "text/xml"
                 ],
                 "tags": [
                     "interview"
@@ -88,7 +89,8 @@ const docTemplate = `{
             "get": {
                 "description": "Get details of an interview by id",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "text/xml"
                 ],
                 "tags": [
                     "interview"
@@ -135,7 +137,8 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "text/xml"
                 ],
                 "tags": [
                     "interview"
