@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 type MultiEncoder struct {
@@ -17,13 +18,12 @@ func NewMultiEncoder(w http.ResponseWriter) *MultiEncoder {
 
 func (e *MultiEncoder) Encode(r *http.Request, data any) error {
 	acceptHeader := r.Header.Get("Accept")
-	switch {
-	case acceptHeader == "application/xml" || acceptHeader == "text/xml":
+	if strings.Contains(acceptHeader, "xml") {
 		e.w.Header().Set("Content-Type", "application/xml")
 		if err := xml.NewEncoder(e.w).Encode(data); err != nil {
 			return fmt.Errorf("encode: %w", err)
 		}
-	default:
+	} else {
 		e.w.Header().Set("Content-Type", "application/json")
 		if err := json.NewEncoder(e.w).Encode(data); err != nil {
 			return fmt.Errorf("encode: %w", err)
