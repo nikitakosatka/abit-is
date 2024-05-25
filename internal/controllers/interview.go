@@ -10,6 +10,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/jackc/pgx/v4"
 
+	"abitis/internal/encoder"
 	"abitis/internal/model"
 	"abitis/internal/services"
 )
@@ -67,6 +68,7 @@ func (c *InterviewController) CreateInterview(
 // @Description get a list of all interviews
 // @Tags interview
 // @Produce json
+// @Produce xml
 // @Success 200 {array} model.Interview
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /api/v1/interview [get]
@@ -82,7 +84,7 @@ func (c *InterviewController) ListInterviews(
 		)
 		return
 	}
-	if err := json.NewEncoder(w).Encode(interviews); err != nil {
+	if err := encoder.NewMultiEncoder(w).Encode(r, interviews); err != nil {
 		http.Error(
 			w, "Failed to encode interviews", http.StatusInternalServerError,
 		)
@@ -96,6 +98,7 @@ func (c *InterviewController) ListInterviews(
 // @Description Get details of an interview by id
 // @Tags interview
 // @Produce json
+// @Produce xml
 // @Param id path int true "Interview ID"
 // @Success 200 {object} model.Interview
 // @Failure 404 {string} string "Not Found"
@@ -127,7 +130,7 @@ func (c *InterviewController) GetInterview(
 		)
 		return
 	}
-	if err := json.NewEncoder(w).Encode(interview); err != nil {
+	if err := encoder.NewMultiEncoder(w).Encode(r, interview); err != nil {
 		http.Error(
 			w,
 			fmt.Sprintf("Failed to get semester: %v", err),
@@ -143,6 +146,7 @@ func (c *InterviewController) GetInterview(
 // @Tags interview
 // @Accept json
 // @Produce json
+// @Produce xml
 // @Security BearerAuth
 // @Param id path int true "Interview ID"
 // @Param semester body model.InterviewData true "Interview data"
@@ -177,7 +181,7 @@ func (c *InterviewController) UpdateInterview(
 		)
 		return
 	}
-	if err := json.NewEncoder(w).Encode(&interview); err != nil {
+	if err := encoder.NewMultiEncoder(w).Encode(r, &interview); err != nil {
 		http.Error(
 			w,
 			fmt.Sprintf("Failed to get semester: %v", err),

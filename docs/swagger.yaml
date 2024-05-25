@@ -88,6 +88,7 @@ paths:
       description: get a list of all interviews
       produces:
       - application/json
+      - text/xml
       responses:
         "200":
           description: OK
@@ -168,6 +169,7 @@ paths:
         type: integer
       produces:
       - application/json
+      - text/xml
       responses:
         "200":
           description: OK
@@ -202,6 +204,7 @@ paths:
           $ref: '#/definitions/model.InterviewData'
       produces:
       - application/json
+      - text/xml
       responses:
         "200":
           description: OK

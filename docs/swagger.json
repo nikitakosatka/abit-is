@@ -15,7 +15,8 @@
             "get": {
                 "description": "get a list of all interviews",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "text/xml"
                 ],
                 "tags": [
                     "interview"
@@ -84,7 +85,8 @@
             "get": {
                 "description": "Get details of an interview by id",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "text/xml"
                 ],
                 "tags": [
                     "interview"
@@ -131,7 +133,8 @@
                     "application/json"
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "text/xml"
                 ],
                 "tags": [
                     "interview"
